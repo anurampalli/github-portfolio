@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>A Tale As Old As Time – Blog | Anasuya Rampalli</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul class="nav__items">
+          <li class="nav__item">
+            <a href="index.html" class="nav__link">Home</a>
+          </li>
+          <li class="nav__item">
+            <a href="blog.html" class="nav__link">Blog</a>
+          </li>
+        </ul>
+      </nav>
+      <h1>A Tale As Old As Time</h1>
+    </header>
+    <main>
+      <article>
+        <p>
+          Let me tell you two stories. Stick around---otherwise, you will miss
+          out (More like I'll miss the chance to rack up the audience engagement
+          I desperately crave. Don't let me down!)
+        </p>
+
+        <h2>The Padlock Principle</h2>
+        <p>
+          Remember when your mother would turn the key in the padlock and then
+          give it a little tug to make sure it was truly locked? And sometimes,
+          she delegated that weighty responsibility to you---who, at the time,
+          didn't know why, but still complied, pulling the padlock yourself,
+          even though you'd already turned the key, grumbled about not trusting
+          the process, even making jokes about mum. Ah, kids these days! Always
+          asking "why, why, why"
+        </p>
+
+        <p>
+          Total digress from the reminisce: Couple of weeks ago, I observed a
+          small child at Booran Reserve. Her dad told her to be careful (she had
+          a scooter and was standing on top of that hill thingy with the rope
+          and slope and slide and all those contraptions) and she, with the
+          innocent (or is it?), relentless logic of a four-year-old, looked at
+          him and asked, "Why?" "Why?" "Why?" We, never asked why! We did what
+          we were told!!! Ahem!
+        </p>
+
+        <h2>The Home Intrusion Testers</h2>
+        <p>
+          Now this one is a story---pinkie promise. My internet provider offers
+          that delightful feature called "parental controls." In my naïveté, I
+          logged into the router, set up homegrown restrictions, and thought I'd
+          achieved technical nirvana. My seven-year-old cracked it in three
+          days. Turns out, the secret to hacking parental controls is
+          persistence: just hammer the connection until the gates (temporarily)
+          open.
+        </p>
+
+        <p>
+          There's a twist, though! I discovered another layer, a "pause" button
+          deep in the control settings (It wasn't deep at all. I discovered it
+          late). Victory! (For a week.) Then---deja vu---my offspring
+          brute-forced their way back online again. At this point, that control
+          was toast. Not to be outwitted, I deleted it, made another, and paused
+          it. And, for one glorious night, it worked---mostly because exhaustion
+          had set in on both sides of this cyberwar.
+        </p>
+
+        <p>Did I hide the remote? Absolutely. Am I proud? Also, absolutely.</p>
+
+        <h2>ACLs: The Digital Padlock</h2>
+        <p>
+          <strong
+            >I bet you know why your mum tugged at that padlock. Whaaaat? You
+            don't? its to make sure the lock isn't broken, silly! We don't live
+            in a "appearance of lock is a deterrence" world anymore. We live in
+            a "brute force until you break it" world.</strong
+          >
+        </p>
+
+        <p>
+          This delightful, and quite possibly endless "game of router" made me
+          reflect on Access Control Lists (ACLs).
+        </p>
+
+        <p>
+          Parental controls are just padlocks in digital form: the illusion of
+          security until someone figures out the sequence.
+        </p>
+
+        <p>
+          I am currently obsessed with logging ACL attempts---maybe out of
+          professional interest, maybe just to keep the spirit of my mother's
+          padlock wisdom alive.
+        </p>
+
+        <p>
+          Debugging ACLs via [System Security → Debugging → Debug Security
+          Rules] makes my Personal Developer Instance (PDI) crawl like a
+          tortoise after a nap. So, my latest passion project is building an ACL
+          logging page---lightweight enough to let the instance breathe, but
+          robust enough for a responsible user to detect suspicious, repeat
+          access attempts, say, to something spicy like a "Custom Confidential
+          Document Table."
+        </p>
+
+        <h2>My Ingenious (and Sometimes Futile) Attempts</h2>
+        <ul>
+          <li>
+            Script Include: Logging all attempts to a custom table...result,
+            slow ACL performance (cue dramatic sigh).
+          </li>
+          <li>Direct GlideRecord update: Faster? Nope. Slows it down.</li>
+          <li>
+            Triggering an event with gs.eventQueue(): Surely, this will work?
+            Spoiler---it doesn't trigger if the ACL blocks access (which,
+            incidentally, is exactly what I need to catch).
+          </li>
+        </ul>
+
+        <blockquote>
+          I am like a dog with a bone, but I'm ready to call it quits soon.
+          Maybe one more day. Two at the most. Then, I'm waving the white flag
+          and going back to the ServiceNow University course I was in the middle
+          of before this wild goose chase began.
+        </blockquote>
+
+        <p>
+          <strong>Yours sincerely</strong><br />
+          padlock tuggist, recovering parental control victim, soon to be
+          <strong>ACL logger</strong>
+        </p>
+      </article>
+      <a href="blog.html">&larr; Back to Blog</a>
+    </main>
+    <footer>
+      <p>&copy; 2025 Anasuya Rampalli. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
