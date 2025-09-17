@@ -624,3 +624,7 @@ body:not(.user-is-tabbing) a:focus {
   margin-top: 0;
   margin-bottom: 0.6rem;
 }
+body.blog-post-page main {
+  margin-left: 15px;
+  margin-right: 15px;
+}
