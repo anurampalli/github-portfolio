@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../styles/portfolio.css" />
+    <title>
+      Cleaning CSV Attachments in ServiceNow – Blog | Anasuya Rampalli
+    </title>
+  </head>
+  <body class="blog-post-page">
+    <header>
+      <nav>
+        <ul class="nav__items">
+          <li class="nav__item">
+            <a href="../../index.html" class="nav__link">Home</a>
+          </li>
+          <li class="nav__item">
+            <a href="../blog.html" class="nav__link">Blog</a>
+          </li>
+        </ul>
+      </nav>
+      <h1>
+        Cleaning CSV Attachments in ServiceNow: Step-by-Step & Practical Script
+      </h1>
+    </header>
+    <main>
+      <article>
+        <p>
+          It’s common to receive CSV files as email attachments with superfluous
+          header lines or unwanted metadata. In the ServiceNow ecosystem,
+          automating the "cleaning" of such files (i.e., removing the top few
+          lines) before downstream use can save major headaches. Here’s a
+          thorough walkthrough and annotated example script, based directly on
+          field use and practical scenarios.
+        </p>
+        <p>You can make a custom script action with the following inputs and outputs</p>
+        <p><strong>Inputs</strong></p>
+        <ul class = "work__list">
+          <li>attachmentSysId</li>
+          <li>linesToSkip</li>
+          <li>writeBackAsAttachment</li>
+          <li>parentTable</li>
+          <li>parentSysId</li>
+          <li>newFileName</li>
+          </ul>
+        <p><strong>Outputs</strong></p>
+          <ul class = "work__list">
+          <li>cleanedCSV</li>
+          <li>cleanedAttachmentSysId</li>
+          </ul>
+        <h2>Key Steps in the CSV Cleaner Script Action</h2>
+        <ul class = "work__list">
+          <li>
+            <strong>Start Execution:</strong> Logs when the cleaning process
+            begins, so Flow Designer activity can be traced.
+          </li>
+          <li>
+            <strong>Initialize Attachment Handler:</strong> Uses
+            <code>GlideSysAttachment</code> to access record attachments.
+          </li>
+          <li>
+            <strong>Determine Target Record:</strong> Uses provided
+            <code>parentTable</code> and <code>parentSysId</code> if set,
+            otherwise defaults to <code>sys_email</code> (for inbound emails),
+            and finds the attachment’s unique ID.
+          </li>
+          <li>
+            <strong>Retrieve Attachments:</strong> Fetches all attachments for
+            the record and loops to find the one with the right ID.
+          </li>
+          <li>
+            <strong>Process the Selected Attachment:</strong> Logs the filename,
+            reads content as a string, and skips if the file is empty.
+          </li>
+          <li>
+            <strong>Analyze and Split Content:</strong> Notes original content
+            size, splits by line (handles both Unix and Windows returns).
+          </li>
+          <li>
+            <strong>Remove First X Lines:</strong> Skips the number specified in
+            <code>linesToSkip</code> input, logs cleaned length.
+          </li>
+          <li>
+            <strong>Return Cleaned CSV:</strong> Sets the result as an output
+            variable; optionally writes a new attachment version if desired.
+          </li>
+          <li>
+            <strong>Finish Execution:</strong> Logs completion, ensuring
+            traceability.
+          </li>
+        </ol>
+
+        <h2>Script: Removes Leading Lines from CSV Attachment</h2>
+        <div class="code-container">
+          <pre><code>
+(function execute(inputs, outputs) {
+  gs.info("[CSV Cleaner] Starting execution...");
+
+  var attachment = new GlideSysAttachment();
+
+  // Default to sys_email if parentTable not provided
+  var parentTable = inputs.parentTable || "sys_email";
+  var parentSysId = inputs.parentSysId || inputs.attachmentSysId;
+
+  // Get attachments for the record
+  var agr = attachment.getAttachments(parentTable, parentSysId);
+
+  while (agr.next()) {
+    // Only process the specific attachment
+    if (agr.getUniqueValue() === inputs.attachmentSysId) {
+      var fileName = agr.getValue("file_name");
+      gs.info("[CSV Cleaner] Processing attachment: " + fileName);
+
+      // Get content as a string (safe in scoped apps)
+      var content = attachment.getContent(agr);
+      if (!content) {
+        gs.warn("[CSV Cleaner] Attachment is empty.");
+        outputs.cleanedCSV = "";
+        return; // exit the script immediately
+      }
+
+      gs.info("[CSV Cleaner] Original content length: " + content.length);
+
+      // Split content into lines
+      var lines = content.split(/\r?\n/);
+      gs.info("[CSV Cleaner] Total lines in file: " + lines.length);
+
+      // Remove first X lines
+      var skip = parseInt(inputs.linesToSkip, 10) || 0;
+      gs.info("[CSV Cleaner] Skipping first " + skip + " lines...");
+      var cleaned = lines.slice(skip).join("\n");
+      gs.info("[CSV Cleaner] Cleaned content length: " + cleaned.length);
+
+      // Return cleaned CSV as output
+      outputs.cleanedCSV = cleaned;
+
+      // Optional: write back as new attachment
+      if (inputs.writeBackAsAttachment == "true") {
+        var newFileName = inputs.newFileName || "cleaned.csv";
+        gs.info(
+          "[CSV Cleaner] Writing cleaned CSV as new attachment: " + newFileName
+        );
+
+        var gr = new GlideRecord(parentTable);
+        if (gr.get(parentSysId)) {
+          var newAttachmentSysId = attachment.write(
+            gr,
+            newFileName,
+            "text/csv",
+            cleaned
+          );
+          gs.info(
+            "[CSV Cleaner] New attachment created with sys_id: " +
+              newAttachmentSysId
+          );
+          outputs.cleanedAttachmentSysId = newAttachmentSysId;
+        } else {
+          gs.error(
+            "[CSV Cleaner] Parent record not found: " +
+              parentTable +
+              " / " +
+              parentSysId
+          );
+        }
+      } else {
+        gs.info(
+          "[CSV Cleaner] Write-back disabled. Returning only cleanedCSV output."
+        );
+      }
+
+      // Exit script since the target attachment is processed
+      gs.info("[CSV Cleaner] Attachment processed. Exiting script.");
+      return;
+    }
+  }
+
+  gs.warn(
+    "[CSV Cleaner] Target attachment not found: " + inputs.attachmentSysId
+  );
+})(inputs, outputs);
+          </code></pre>
+        </div>
+
+        <h2>How the Script Works (with Practical Pointers)</h2>
+        <ul class="work__list">
+          <li>
+            <strong>GlideSysAttachment API:</strong> Reads and writes files
+            attached to ServiceNow records, easy to use, and avoids Java
+            InputStream issues.
+          </li>
+          <li>
+            <strong>Target & Parent Table:</strong> Defaults work for
+            <em>most inbound email scenarios</em>; simply supply overrides for
+            other flows.
+          </li>
+          <li>
+            <strong>Line Handling:</strong> Supports both Windows
+            (<code>\r\n</code>) and Unix (<code>\n</code>) formats for maximum
+            compatibility.
+          </li>
+          <li>
+            <strong>Edge Cases:</strong> Handles, logs, and exits on empty files
+            for robustness.
+          </li>
+          <li>
+            <strong>Outputs:</strong> Returns the cleaned CSV for immediate use
+            or writes it back as a new version if needed for a Transform Map or
+            later steps.
+          </li>
+        </ul>
+
+        <h2>Outputs Explained</h2>
+        <ul>
+          <li>
+            <code>outputs.cleanedCSV</code>: Cleaned CSV content, supplied for
+            flow or automation chaining.
+          </li>
+          <li>
+            <code>outputs.cleanedAttachmentSysId</code>: Only populated if the
+            cleaned file is saved as a new attachment for traceability or
+            downstream imports.
+          </li>
+        </ul>
+
+        <p>
+          This reusable pattern demystifies attachment handling in ServiceNow
+          integrations — and with logging throughout, debugging your next CSV
+          import just got a whole lot easier!
+        </p>
+      </article>
+      <a href="../blog.html">&larr; Back to Blog</a>
+    </main>
+    <footer>
+      <p>&copy; 2025 Anasuya Rampalli. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
