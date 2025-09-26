@@ -3,266 +3,244 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Anasuya Rampalli | Resume</title>
-    <link rel="stylesheet" href="../styles/portfolio.css" />
+    <title>Anasuya Rampalli | ServiceNow Resume</title>
+    <link rel="stylesheet" href="../styles/resume.css" />
   </head>
   <body>
-    <header class="header" role="banner" id="top">
-      <div class="row">
-        <div class="header__text-box">
-          <div class="header__text">
-            <h1 class="heading-primary">
-              <span>Anasuya Rampalli</span>
-            </h1>
-            <p>ServiceNow Developer & IT Consultant, Melbourne, Australia</p>
-            <a href="#contact" class="btn btn--pink">Get in touch</a>
-          </div>
+    <header>
+      <h1><a href="../index.html">Home</a></h1>
+      <h1>Anasuya Rampalli</h1>
+      <p>ServiceNow Developer | Melbourne, Australia</p>
+    </header>
+    <main>
+      <!-- Profile -->
+      <div class="card">
+        <h2>Profile</h2>
+        <p>
+          ServiceNow Developer with <strong>8+ years</strong> IT consulting and
+          development experience. Specialized in ITSM, Flow Designer, Scoped
+          Apps, Scripted REST APIs, ACLs, and automation. Completed FDM Software
+          Engineering program, eager to contribute to ServiceNow projects.
+        </p>
+      </div>
+      <!-- Core Skills -->
+      <div class="card">
+        <h2>Core Skills</h2>
+        <ul>
+          <li>
+            <span class="tech-highlight">ServiceNow ITSM:</span> Incident,
+            Problem, Change, Request, Service Catalog, SLAs, Workflows
+          </li>
+          <li>
+            <span class="tech-highlight">Automation:</span> Flow Designer,
+            GlideRecord, Scheduled Jobs, Script Actions
+          </li>
+          <li>
+            <span class="tech-highlight">Scoped Apps & Integrations:</span>
+            Scripted REST APIs, Domain Separation, OAuth 2.0, LDAP, JIRA
+          </li>
+          <li>
+            <span class="tech-highlight">Security:</span> ACLs, Role-Based
+            Access Control
+          </li>
+          <li>
+            <span class="tech-highlight">Full-Stack:</span> React, Spring Boot,
+            REST APIs, JWT
+          </li>
+          <li>
+            <span class="tech-highlight">Agile & SDLC:</span> TDD, CI/CD, ITIL,
+            documentation, stakeholder engagement
+          </li>
+        </ul>
+      </div>
+      <!-- ServiceNow Projects -->
+      <div class="card">
+        <h2>ServiceNow Projects</h2>
+        <button type="button" class="collapsible">
+          Data Load & Transformation Framework
+        </button>
+        <div class="content">
+          <p>
+            <strong>Purpose:</strong> Automate HR-to-ServiceNow sys_user imports
+            with data integrity, duplicate prevention, and scheduled jobs.
+          </p>
+          <ul>
+            <li>
+              Import Sets & Transform Maps from CSV/XML with normalization and
+              enrichment.
+            </li>
+            <li>
+              Scripts to split full name, normalize emails, map managers to
+              sys_id.
+            </li>
+            <li>
+              Nightly Scheduled Jobs automate imports, with logs for errors and
+              manager mapping.
+            </li>
+            <li>Framework is extendable for REST-based imports.</li>
+          </ul>
+        </div>
+        <button type="button" class="collapsible">
+          ITSM Core Module Implementation
+        </button>
+        <div class="content">
+          <p>
+            <strong>Purpose:</strong> Implemented Incident-Problem-Change
+            processes and automation.
+          </p>
+          <ul>
+            <li>
+              Flow Designer: auto-create Problems from recurring Incidents.
+            </li>
+            <li>
+              Automated Software Installation Requests with CI validation,
+              approvals, notifications.
+            </li>
+            <li>
+              Custom Script Actions, Client Scripts, UI Policies, and Update
+              Sets.
+            </li>
+          </ul>
+        </div>
+        <button type="button" class="collapsible">
+          Domain-Aware Incident Integration (Scoped App)
+        </button>
+        <div class="content">
+          <p>
+            <strong>Purpose:</strong> Multi-tenant incident integration with
+            Domain Separation.
+          </p>
+          <ul>
+            <li>Scoped app with Scripted REST API for incident creation.</li>
+            <li>
+              Incidents routed to correct domain based on authenticated user.
+            </li>
+            <li>Tested via Postman collection; OAuth 2.0 authentication.</li>
+            <li>Reusable app; foundation for Problem/Change integration.</li>
+          </ul>
+        </div>
+        <button type="button" class="collapsible">
+          ITSM Customization & Process Automation
+        </button>
+        <div class="content">
+          <p>
+            <strong>Purpose:</strong> Improve ITSM efficiency through SLAs,
+            ACLs, automation, and API integrations.
+          </p>
+          <ul>
+            <li>SLA definitions with pause/resume conditions.</li>
+            <li>ACLs for restricted updates and role-based access.</li>
+            <li>Catalog Client Scripts & UI Policies for dynamic forms.</li>
+            <li>Scripted REST API: fetch all open P1 incidents in JSON.</li>
+            <li>Background GlideRecord scripts for bulk updates.</li>
+          </ul>
         </div>
       </div>
-    </header>
-    <main role="main">
-      <!-- Profile -->
-      <section class="row">
-        <div class="card">
-          <h2>Profile</h2>
-          <p>
-            ServiceNow Developer & IT Consultant with
-            <strong>8+ years</strong> enterprise IT experience in consulting,
-            integration, and development roles (FDM, Cognizant, Wipro). Skilled
-            in ServiceNow ITSM, integrations, scoped apps, and full-stack
-            (React, Spring Boot). Recently returned to workforce after a career
-            break, bringing renewed energy and leadership from professional and
-            community roles.
-          </p>
-        </div>
-      </section>
-
-      <!-- Core Skills -->
-      <section class="row">
-        <div class="card">
-          <h2>Core Skills</h2>
-          <ul>
-            <li>
-              ServiceNow ITSM: Incident, Problem, Change, Request | Service
-              Catalog | Workflows | ACLs
-            </li>
-            <li>
-              ServiceNow Scripting: GlideRecord, Business Rules, Client Scripts,
-              UI Policies
-            </li>
-            <li>
-              Integrations: REST, LDAP, JIRA, E-Bonding; Import Sets & Transform
-              Maps
-            </li>
-            <li>Full-Stack: React, Spring Boot, REST APIs, JWT, RBAC</li>
-            <li>Agile & SDLC: CI/CD, ITIL, technical documentation</li>
-            <li>
-              Leadership: mentoring, requirements gathering, stakeholder/client
-              engagement
-            </li>
-          </ul>
-        </div>
-      </section>
       <!-- Professional Experience -->
-      <section class="row">
-        <div class="card">
-          <h2>Professional Experience</h2>
-
-          <div class="resume-job">
-            <h3>FDM Group — IT Consultant</h3>
-            <p><em>Melbourne · Nov 2024 – May 2025</em></p>
-            <ul>
-              <li>
-                Developed full-stack apps (React + Spring Boot) with JWT
-                authentication & RBAC.
-              </li>
-              <li>Built Task Manager App with asymmetric encryption.</li>
-              <li>
-                Created FX Trading Platform modules with WebSockets for
-                low-latency updates.
-              </li>
-              <li>
-                Applied TDD and Selenium to ensure code quality in agile
-                sprints.
-              </li>
-            </ul>
-          </div>
-
-          <div class="resume-job">
-            <h3>Cognizant — Developer / Technical Leader</h3>
-            <p><em>India · Mar 2008 – Feb 2012</em></p>
-            <ul>
-              <li>
-                Delivered integrations (JCAPS, SQL, EDI) for healthcare and
-                retail clients.
-              </li>
-              <li>
-                Optimized GlassFish server performance by 30% for Emdeon
-                Business Services.
-              </li>
-              <li>
-                Mentored junior staff, conducted 300+ interviews, and engaged
-                with CxO-level stakeholders.
-              </li>
-              <li>
-                Recognized for ahead-of-schedule delivery and cost-saving
-                process improvements.
-              </li>
-            </ul>
-          </div>
-
-          <div class="resume-job">
-            <h3>Wipro — Developer / Technical Leader</h3>
-            <p><em>India · Apr 2004 – Jan 2008</em></p>
-            <ul>
-              <li>
-                Implemented trading partner integrations for Carrefour,
-                improving system reliability.
-              </li>
-              <li>
-                Delivered critical projects using JCAPS, EDI, Oracle SQL under
-                tight deadlines.
-              </li>
-              <li>
-                Earned multiple awards for defect-free and proactive project
-                delivery.
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- Projects -->
-      <section class="row">
-        <div class="card">
-          <h2>ServiceNow Projects</h2>
-          <ul>
-            <li>
-              <strong>ITSM Core Module Implementation</strong> — Configured
-              Incident, Problem, Change, Request modules; built workflows, SLAs,
-              reports and dashboards.
-            </li>
-            <li>
-              <strong>Service Catalog Automation</strong> — Designed catalog
-              items with execution plans, client scripts, and dynamic form
-              behaviors.
-            </li>
-            <li>
-              <strong>Integrations</strong> — Built JIRA REST API integration,
-              LDAP sync, and cross-instance E-Bonding.
-            </li>
-            <li>
-              <strong>Scoped Applications</strong> — Domain-Aware Incident
-              Integration (Scripted REST API + domain separation); Training
-              Tracker Pro (custom tables, dashboards, notifications).
-            </li>
-          </ul>
-        </div>
-      </section>
-
+      <div class="card">
+        <h2>Professional Experience</h2>
+        <h3>FDM Group — IT Consultant / Full-Stack Developer</h3>
+        <p><em>Melbourne · Nov 2024 – Present</em></p>
+        <ul>
+          <li>
+            Full-stack development of Task Manager and FX Trading Platform with
+            React, Spring Boot, JWT, RSA encryption.
+          </li>
+          <li>
+            Differentiated UI for ADMIN vs USER roles; TDD-based robust coding.
+          </li>
+          <li>
+            Selenium automation for frontend testing; low-latency APIs for
+            trading modules.
+          </li>
+          <li>
+            Material UI dashboards, real-time order history, and encrypted
+            communication.
+          </li>
+        </ul>
+        <h3>Cognizant — Technical Leader / Senior Developer / Team Leader</h3>
+        <p><em>India · Mar 2008 – Feb 2012</em></p>
+        <ul>
+          <li>
+            Led Java CAPS / EDI integration projects; optimized GlassFish
+            performance by 30%.
+          </li>
+          <li>
+            Delivered EOR maps and projects ahead of schedule; improved client
+            satisfaction.
+          </li>
+          <li>
+            Mentored team, reduced training costs, ensured high-quality
+            delivery.
+          </li>
+        </ul>
+        <h3>Wipro — Developer / Technical Leader</h3>
+        <p><em>India · Apr 2004 – Jan 2008</em></p>
+        <ul>
+          <li>
+            Managed Carrefour TPA Application; reduced downtime, delivered
+            change requests with impact analysis.
+          </li>
+          <li>
+            Zero-defect delivery, Oracle stored procedures, Process Tracker
+            enhancements.
+          </li>
+        </ul>
+      </div>
       <!-- Career Break & Volunteering -->
-      <section class="row">
-        <div class="card">
-          <h2>Career Break & Volunteering (2012–2024)</h2>
-          <ul>
-            <li>
-              Freelance editor & web content writer (Cactus Communications).
-            </li>
-            <li>
-              Volunteer Project Manager, Koshish Foundation: built website,
-              introduced tracking systems.
-            </li>
-            <li>
-              Community leadership: School Council member, PFA committee,
-              Certified Yoga Trainer.
-            </li>
-            <li>PMP Certification (2023).</li>
-          </ul>
-        </div>
-      </section>
-
+      <div class="card">
+        <h2>Career Break & Volunteering (2012–2024)</h2>
+        <ul>
+          <li>Freelance editor & web content writer (Cactus Communications)</li>
+          <li>
+            Volunteer Project Manager, Koshish Foundation: website and tracking
+            systems
+          </li>
+          <li>
+            Community leadership: School Council, PFA; Certified Yoga Trainer
+          </li>
+          <li>PMP Certification (2023)</li>
+        </ul>
+      </div>
       <!-- Education & Certifications -->
-      <section class="row">
-        <div class="card">
-          <h2>Education & Certifications</h2>
-          <ul>
-            <li>MCA, Acharya Nagarjuna University (2000–2003)</li>
-            <li>B.Com, Acharya Nagarjuna University (1997–2000)</li>
-            <li>PMP Certified – Project Management Professional (2023)</li>
-            <li>
-              Currently pursuing ServiceNow certifications (CMA, CIS
-              ITSM/ITOM/ITAM)
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- Additional Information -->
-      <section class="row">
-        <div class="card">
-          <h2>Additional Information</h2>
-          <ul>
-            <li>Languages: English, Telugu, Hindi</li>
-            <li>
-              Interests: Yoga (Certified Trainer), Community Engagement,
-              Volunteering
-            </li>
-          </ul>
-        </div>
-      </section>
-    </main>
-    <section class="contact" id="contact">
-      <div class="row">
-        <h2>Get in Touch</h2>
-        <div class="contact__info">
-          <p>
-            If you’d like to discuss a project, collaboration, or just say
-            hello, connect on LinkedIn!
-          </p>
+      <div class="card">
+        <h2>Education & Certifications</h2>
+        <ul>
+          <li>MCA, Acharya Nagarjuna University (2000–2003)</li>
+          <li>B.Com, Acharya Nagarjuna University (1997–2000)</li>
+          <li>PMP Certified – Project Management Professional (2023)</li>
+        </ul>
+      </div>
+      <!-- Contact -->
+      <div class="card">
+        <h2>Contact</h2>
+        <p>
+          Email:
+          <a href="mailto:anurampalli@gmail.com">anurampalli@gmail.com</a>
+        </p>
+        <p>
+          LinkedIn:
           <a
             href="https://www.linkedin.com/in/anurampallichitta/"
             target="_blank"
-            class="btn"
-            >Connect on LinkedIn</a
+            >linkedin.com/in/anurampallichitta</a
           >
-        </div>
+        </p>
       </div>
-    </section>
-    <footer role="contentinfo" class="footer">
-      <div class="row">
-        <ul class="footer__social-links">
-          <li>
-            <a href="https://github.com/anurampalli" title="View my GitHub">
-              <img
-                src="../images/github.svg"
-                class="footer__social-image"
-                alt="GitHub"
-              />
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.linkedin.com/in/anurampallichitta/"
-              title="Connect with me on LinkedIn"
-            >
-              <img
-                src="../images/linkedin.svg"
-                class="footer__social-image"
-                alt="LinkedIn"
-              />
-            </a>
-          </li>
-        </ul>
-        <p>&copy; 2025 Anasuya Rampalli. Template: Nisar.</p>
-      </div>
+    </main>
+    <footer>
+      <p>&copy; 2025 Anasuya Rampalli</p>
     </footer>
-    <a href="#top" class="back-to-top" title="Back to Top">
-      <img
-        src="./images/arrow-up.svg"
-        alt="Back to Top"
-        class="back-to-top__image"
-      />
-    </a>
-    <script src="index.js"></script>
+    <script>
+      const collapsibles = document.querySelectorAll(".collapsible");
+      collapsibles.forEach((btn) => {
+        btn.addEventListener("click", function () {
+          this.classList.toggle("active");
+          const content = this.nextElementSibling;
+          content.style.display =
+            content.style.display === "block" ? "none" : "block";
+        });
+      });
+    </script>
   </body>
 </html>

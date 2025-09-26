@@ -1,0 +1,130 @@
+/* Base */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #f0f2f5, #ffffff);
+}
+
+header,
+footer {
+  background-color: #ff4d6d;
+  color: #fff;
+  padding: 25px 20px;
+  text-align: center;
+}
+
+/* Make "Home" visible in header */
+header h1 a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+header h1 a:visited {
+  color: #fff;
+}
+
+header h1 a:hover,
+header h1 a:focus {
+  color: #ffe9ef;
+  text-decoration: underline;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.2em;
+}
+
+header p {
+  margin: 5px 0 0;
+  font-size: 1em;
+}
+
+main {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 25px 30px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+  color: #ff4d6d;
+  border-bottom: 2px solid #ff4d6d;
+  padding-bottom: 5px;
+}
+
+h3 {
+  color: #ff6f81;
+  margin-top: 20px;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 6px;
+}
+
+.tech-highlight {
+  font-weight: bold;
+  color: #ff4d6d;
+}
+
+/* Collapsible */
+.collapsible {
+  background-color: #f9f9f9;
+  color: #333;
+  cursor: pointer;
+  padding: 14px 20px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 8px 0;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.collapsible:hover {
+  background-color: #eaeaea;
+}
+
+.collapsible.active {
+  background-color: #f0f0f0;
+}
+
+.content {
+  padding: 0 20px;
+  display: none;
+  overflow: hidden;
+  background-color: #fafafa;
+  border-left: 4px solid #ff4d6d;
+  margin-bottom: 10px;
+  border-radius: 0 6px 6px 0;
+}
+
+.content ul {
+  margin: 10px 0;
+}
+
+a {
+  color: #ff4d6d;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
